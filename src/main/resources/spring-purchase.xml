@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Product bean -->
+    <bean id="productBean" class="com.wipro.springassignments.Product">
+        <constructor-arg value="201"/>
+        <constructor-arg value="Laptop"/>
+        <constructor-arg value="75000.00"/>
+    </bean>
+
+    <!-- Purchase bean with all arguments explicitly defined -->
+    <bean id="purchaseBean" class="com.wipro.springassignments.Purchase">
+        <constructor-arg value="101"/>
+        <constructor-arg value="2025-08-04"/>
+        <constructor-arg ref="productBean"/>
+    </bean>
+
+</beans>
