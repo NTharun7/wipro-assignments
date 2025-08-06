@@ -1,0 +1,16 @@
+package com.wiproassignments.springbootjdbcbooks;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
+
+@RestController
+public class BookController {
+
+    private final BookDAO bookDAO = new BookDAO();
+
+    @GetMapping("/books")
+    public List<Book> getAllBooks() {
+        return bookDAO.getAllBooks();
+    }
+}

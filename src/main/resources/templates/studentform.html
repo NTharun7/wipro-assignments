@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Form</title>
+</head>
+<body>
+
+    <img th:src="@{/images/solr.png}" alt="Banner" width="400" />
+
+    <h2>Student Registration Form</h2>
+
+    <form th:action="@{/form}" th:object="${student}" method="post">
+        <div>
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" />
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        </div>
+
+        <div>
+            <label>Email:</label>
+            <input type="email" th:field="*{email}" />
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+        </div>
+
+        <div>
+            <label>Course:</label>
+            <input type="text" th:field="*{course}" />
+            <p th:if="${#fields.hasErrors('course')}" th:errors="*{course}"></p>
+        </div>
+
+        <div>
+            <label>Sex:</label>
+            <input type="radio" th:field="*{sex}" value="Male" /> Male
+            <input type="radio" th:field="*{sex}" value="Female" /> Female
+            <p th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}"></p>
+        </div>
+
+        <div>
+            <label>Section:</label>
+            <select th:field="*{section}">
+                <option value="">-- Select Section --</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select>
+            <p th:if="${#fields.hasErrors('section')}" th:errors="*{section}"></p>
+        </div>
+
+        <div>
+            <label>Country:</label>
+            <select th:field="*{country}">
+                <option value="">-- Select Country --</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+            </select>
+            <p th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></p>
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+</body>
+</html>
