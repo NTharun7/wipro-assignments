@@ -1,3 +1,0 @@
-Reading file:
-Hello, this is a test file.
-Line 2 of the file.
