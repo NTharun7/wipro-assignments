@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Feedback Survey</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f4f4; }
+    header { background-color: #0077b6; color: white; padding: 1rem; text-align: center; }
+    header p { margin: 0.5rem 0 0; }
+    nav { background-color: #023e8a; padding: 0.5rem; text-align: center; }
+    nav a { color: white; margin: 0 1rem; text-decoration: none; }
+    main { display: flex; flex-wrap: wrap; padding: 1rem; gap: 1rem; }
+    section { background: white; padding: 1rem; border-radius: 5px; flex: 2; min-width: 300px; }
+    aside { background: #fff3cd; padding: 1rem; border-radius: 5px; flex: 1; min-width: 200px; }
+    label { display: block; margin-top: 0.5rem; font-weight: bold; }
+    input, select, textarea { width: 100%; padding: 0.5rem; margin-top: 0.25rem; border: 1px solid #ccc; border-radius: 4px; }
+    input[type="radio"] { width: auto; margin-right: 0.25rem; }
+    input[type="range"] { width: 100%; }
+    .form-group { margin-bottom: 1rem; }
+    .form-inline { display: flex; align-items: center; gap: 1rem; }
+    footer { background-color: #333; color: white; text-align: center; padding: 0.5rem; margin-top: 1rem; }
+    .buttons { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    button { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; }
+    button[type="submit"] { background-color: #0077b6; color: white; }
+    button[type="reset"] { background-color: #ccc; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Website Feedback Survey</h1>
+    <p>We value your opinion. Please take a minute to share your thoughts.</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <main>
+    <section>
+      <form action="feedback.php" method="POST">
+        <!-- Section 1: Personal Info -->
+        <section>
+          <h2>Personal Information</h2>
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="10" max="100" required>
+          </div>
+        </section>
+
+        <!-- Section 2: Website Rating -->
+        <section>
+          <h2>Website Rating</h2>
+          <div class="form-group">
+            <label for="design">Design (1-10):</label>
+            <input type="range" id="design" name="design" min="1" max="10">
+          </div>
+          <div class="form-group">
+            <label>Content Quality:</label>
+            <div class="form-inline">
+              <label><input type="radio" name="content_quality" value="Excellent"> Excellent</label>
+              <label><input type="radio" name="content_quality" value="Good"> Good</label>
+              <label><input type="radio" name="content_quality" value="Average"> Average</label>
+              <label><input type="radio" name="content_quality" value="Poor"> Poor</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="page">Most visited page:</label>
+            <select id="page" name="page">
+              <option>Home</option>
+              <option>Blog</option>
+              <option>Products</option>
+              <option>Contact</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- Section 3: Suggestions -->
+        <section>
+          <h2>Suggestions</h2>
+          <div class="form-group">
+            <label for="suggestions">Your Suggestions</label>
+            <textarea id="suggestions" name="suggestions" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="checkbox" id="contacted" name="contacted">
+            <label for="contacted">I agree to be contacted regarding my feedback</label>
+          </div>
+        </section>
+
+        <!-- Buttons -->
+        <div class="buttons">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <aside>
+      <h3>Why your feedback matters</h3>
+      <p>Your feedback helps us improve our website experience for everyone. Thank you!</p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Website Survey</p>
+  </footer>
+</body>
+</html>

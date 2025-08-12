@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Purchase Orders</title>
+  <style>
+    :root{--bg:#f3f6f9;--card:#fff;--muted:#6b7280;--accent:#0f172a;--success:#16a34a;--info:#0ea5e9;--warning:#f59e0b;--danger:#ef4444}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;margin:0;background:var(--bg);color:var(--accent)}
+    .container{max-width:880px;margin:40px auto;padding:20px}
+    .card{background:var(--card);border-radius:10px;padding:22px;box-shadow:0 6px 20px rgba(12,20,30,.06);}
+    h1{margin:0 0 14px;font-size:22px}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    caption{caption-side:top;text-align:left;font-weight:600;margin-bottom:8px}
+    thead th{background:#f8fafc;color:#111;font-weight:600;padding:10px 12px;border-bottom:1px solid #e6eef8;text-align:left}
+    tbody td{padding:12px;border-bottom:1px solid #f1f5f9}
+    tbody tr:last-child td{border-bottom:0}
+    .numeric{text-align:right;white-space:nowrap}
+    .muted{color:var(--muted);font-size:13px}
+    .status{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;color:white}
+    .shipped{background:var(--success)}
+    .processing{background:var(--info)}
+    .delivered{background:#10b981}
+    .cancelled{background:var(--danger)}
+    tfoot th{padding:12px 8px;text-align:right;border-top:2px solid #e6eef8}
+    .grand{font-size:15px}
+    @media (max-width:720px){
+      .container{padding:12px}
+      table{font-size:13px}
+      thead th:nth-child(4),tbody td:nth-child(4){display:none} /* hide Items on small screens */
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="card" aria-labelledby="ordersHeading">
+      <h1 id="ordersHeading">Purchase Orders</h1>
+
+      <table role="table" aria-label="Recent purchase orders">
+        <caption class="muted">Summary of recent orders and their status</caption>
+        <thead>
+          <tr>
+            <th scope="col">Order #</th>
+            <th scope="col">Date</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Items</th>
+            <th scope="col" class="numeric">Qty</th>
+            <th scope="col" class="numeric">Unit Price</th>
+            <th scope="col" class="numeric">Line Total</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-line="24.00">
+            <td>2001</td>
+            <td class="muted">2025-07-29</td>
+            <td>Asha Sharma</td>
+            <td>Basmati Rice (5 kg)</td>
+            <td class="numeric">1</td>
+            <td class="numeric">$24.00</td>
+            <td class="numeric">$24.00</td>
+            <td><span class="status shipped">Shipped</span></td>
+          </tr>
+
+          <tr data-line="6.75">
+            <td>2002</td>
+            <td class="muted">2025-07-30</td>
+            <td>Raman &amp; Co.</td>
+            <td>Brown Bread</td>
+            <td class="numeric">3</td>
+            <td class="numeric">$2.25</td>
+            <td class="numeric">$6.75</td>
+            <td><span class="status processing">Processing</span></td>
+          </tr>
+
+          <tr data-line="18.50">
+            <td>2003</td>
+            <td class="muted">2025-08-01</td>
+            <td>Priya Patel</td>
+            <td>Assorted Snacks Box</td>
+            <td class="numeric">1</td>
+            <td class="numeric">$18.50</td>
+            <td class="numeric">$18.50</td>
+            <td><span class="status delivered">Delivered</span></td>
+          </tr>
+
+          <tr data-line="3.60">
+            <td>2004</td>
+            <td class="muted">2025-08-02</td>
+            <td>Vijay Enterprises</td>
+            <td>Sugar (2 kg)</td>
+            <td class="numeric">2</td>
+            <td class="numeric">$1.80</td>
+            <td class="numeric">$3.60</td>
+            <td><span class="status cancelled">Cancelled</span></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="6" scope="row" class="grand">Grand Total</th>
+            <th class="numeric grand" id="grandTotal">$0.00</th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+
+    </section>
+  </main>
+
+  <script>
+    // compute grand total from data-line attributes (keeps values in sync even if rows are updated)
+    (function(){
+      const rows = document.querySelectorAll('tbody tr[data-line]');
+      let sum = 0;
+      rows.forEach(r=>{
+        const v = parseFloat(r.getAttribute('data-line')) || 0;
+        sum += v;
+      });
+      document.getElementById('grandTotal').textContent = '$' + sum.toFixed(2);
+    })();
+  </script>
+</body>
+</html>
