@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IIFE Product Inventory</title>
+    <link rel="icon" href="data:,">
+
+</head>
+<body>
+    <h2>Check the browser console for output</h2>
+
+    <script>
+ 
+        const productInventory = (function () {
+            let stock = 0; 
+
+            return {
+                getStock: function () {
+                    return stock;
+                },
+                addStock: function (quantity) {
+                    stock += quantity;
+                    console.log(`Stock after adding: ${stock}`);
+                },
+                sell: function (quantity) {
+                    if (stock >= quantity) {
+                        stock -= quantity;
+                        console.log(`Sold ${quantity} items.`);
+                    } else {
+                        console.log("Insufficient stock");
+                    }
+                }
+            };
+        })();
+
+        productInventory.addStock(10); 
+        productInventory.sell(3);      
+        console.log(`Stock remaining: ${productInventory.getStock()}`);
+    </script>
+</body>
+</html>

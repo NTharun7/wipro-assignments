@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tour Booking Form</title>
+</head>
+<body>
+  <h2>Tour Booking Form</h2>
+
+  <form>
+    <label>Full Name:</label>
+    <input type="text" id="name"><br><br>
+
+    <label>Email:</label>
+    <input type="email" id="email"><br><br>
+
+    <label>Destination:</label>
+    <select id="destination">
+      <option value="Ooty">Ooty</option>
+      <option value="Goa">Goa</option>
+      <option value="Manali">Manali</option>
+    </select><br><br>
+
+    <label>Number of Days:</label>
+    <input type="number" id="days"><br><br>
+
+    <label>Number of Travelers:</label>
+    <input type="number" id="travelers"><br><br>
+
+    <button type="button" onclick="bookNow()">Book Now</button>
+  </form>
+
+  <h3>Booking Summary:</h3>
+  <div id="summary"></div>
+
+  <script>
+    function bookNow() {
+      // Read values using getElementById()
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let destination = document.getElementById("destination").value;
+      let days = parseInt(document.getElementById("days").value);
+      let travelers = parseInt(document.getElementById("travelers").value);
+
+      // Price per day per person
+      let pricePerDay = 0;
+      if (destination === "Ooty") pricePerDay = 2000;
+      else if (destination === "Goa") pricePerDay = 3000;
+      else if (destination === "Manali") pricePerDay = 4000;
+
+      // Calculate total cost
+      let totalPrice = pricePerDay * days * travelers;
+
+      // Display booking summary
+      document.getElementById("summary").innerHTML =
+        `Name: ${name} <br>
+         Email: ${email} <br>
+         Destination: ${destination} <br>
+         Days: ${days} <br>
+         Travelers: ${travelers} <br>
+         Total Price: ₹${totalPrice}`;
+    }
+  </script>
+</body>
+</html>

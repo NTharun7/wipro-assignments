@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Store Management</title>
+</head>
+<body>
+<script>
+// 1. Create a JSON array of books
+let books = [
+  { title: "JavaScript Basics", author: "Anu", price: 450, available: true },
+  { title: "HTML & CSS", author: "Devi", price: 350, available: false }
+];
+
+// 2. Display all books using for...of loop
+console.log("All Books:");
+for (let book of books) {
+  console.log(`Title: ${book.title}, Author: ${book.author}, Price: ₹${book.price}, Available: ${book.available}`);
+}
+
+// 3. Display only available books
+console.log("\nAvailable Books:");
+for (let book of books) {
+  if (book.available) {
+    console.log(`Title: ${book.title}, Author: ${book.author}, Price: ₹${book.price}`);
+  }
+}
+
+// 4. Add a new book
+let newBook = { title: "Node.js Guide", author: "Ravi", price: 550, available: true };
+books.push(newBook);
+console.log("\nAfter Adding:");
+console.log(books.map(b => b.title).join(", "));
+
+// 5. Update the price of a specific book
+let bookToUpdate = books.find(b => b.title === "JavaScript Basics");
+if (bookToUpdate) {
+  bookToUpdate.price = 500;
+}
+console.log("\nAfter Price Update:");
+console.log(`JavaScript Basics - ₹${bookToUpdate.price}`);
+
+// 6. Delete a book from the JSON array
+let indexToDelete = books.findIndex(b => b.title === "HTML & CSS");
+if (indexToDelete !== -1) {
+  books.splice(indexToDelete, 1);
+}
+console.log("\nAfter Deletion:");
+console.log(books.map(b => b.title).join(", "));
+
+</script>
+</body>
+</html>

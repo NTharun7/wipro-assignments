@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Income Tax Calculator</title>
+</head>
+<body>
+<script>
+function isEmpty(value) {
+    return value === null || value.trim() === "";
+}
+
+var fullName = prompt("Enter your full name:");
+if (isEmpty(fullName)) {
+    alert("Name is required.");
+} else {
+    var pan = prompt("Enter your PAN number (10 characters):");
+    if (isEmpty(pan) || pan.trim().length !== 10) {
+        alert("Invalid PAN. Must be exactly 10 characters.");
+    } else {
+        pan = pan.trim().toUpperCase();
+        var dobInput = prompt("Enter your Date of Birth (YYYY-MM-DD):");
+        var dob = new Date(dobInput);
+        if (isEmpty(dobInput) || isNaN(dob.getTime())) {
+            alert("Invalid Date of Birth.");
+        } else {
+            var incomeInput = prompt("Enter your Annual Income:");
+            if (isEmpty(incomeInput) || isNaN(parseFloat(incomeInput))) {
+                alert("Invalid Income.");
+            } else {
+                var income = parseFloat(incomeInput);
+
+                var today = new Date();
+                var age = today.getFullYear() - dob.getFullYear();
+                var monthDiff = today.getMonth() - dob.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+
+                var tax = 0;
+                if (income <= 250000) {
+                    tax = 0;
+                } else if (income <= 500000) {
+                    tax = (income - 250000) * 0.05;
+                } else if (income <= 1000000) {
+                    tax = (250000 * 0.05) + (income - 500000) * 0.20;
+                } else {
+                    tax = (250000 * 0.05) + (500000 * 0.20) + (income - 1000000) * 0.30;
+                }
+
+                tax = Math.round(tax);
+
+                alert(
+                    "Name: " + fullName.toUpperCase() +
+                    "\nPAN: " + pan +
+                    "\nAge: " + age + " years" +
+                    "\nAnnual Income: " + income +
+                    "\nCalculated Tax: ₹" + tax
+                );
+            }
+        }
+    }
+}
+</script>
+</body>
+</html>

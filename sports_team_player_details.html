@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sports Team Player Details</title>
+</head>
+<body>
+<script>
+// Player 1 object
+const player1 = {
+  name: "Virat Kohli",
+  age: 36,
+  sport: "Cricket",
+  stats: {
+    matches: 500,
+    runs: 25000,
+    average: 57.2
+  }
+};
+
+// Player 2 object
+const player2 = {
+  name: "Lionel Messi",
+  age: 37,
+  sport: "Football",
+  stats: {
+    matches: 800,
+    goals: 729,
+    assists: 300
+  }
+};
+
+// Step 1: Store players in an array
+const players = [player1, player2];
+
+// Step 2: Array destructuring
+for (let { name, sport, stats } of players) {
+  
+  // Nested destructuring for stats
+  const { matches, runs, average, goals, assists } = stats;
+
+  // Step 3: Template literals for printing
+  console.log(`Player ${name} plays ${sport}.`);
+  
+  if (sport === "Cricket") {
+    console.log(`Matches: ${matches} | Runs: ${runs} | Batting Average: ${average}`);
+  } else if (sport === "Football") {
+    console.log(`Matches: ${matches} | Goals: ${goals} | Assists: ${assists}`);
+  }
+  
+  console.log(""); // blank line
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bank Customers – Dynamic Array</title>
+</head>
+<body>
+<script>
+var count = parseInt(prompt("How many customers to register?"));
+var customers = [];
+for (var i = 0; i < count; i++) {
+    customers.push(prompt("Enter name of customer " + (i + 1) + ":"));
+}
+
+var output = "";
+output += "Original Customers: " + customers.join(", ") + "\n";
+
+output += "Customers using for...of:\n";
+for (var name of customers) {
+    output += name + "\n";
+}
+
+output += "\nCustomer IDs using for...in:\n";
+for (var index in customers) {
+    output += index + "\n";
+}
+
+var newCustomer = prompt("Enter new customer to add at the end:");
+customers.push(newCustomer);
+output += "\nAfter push('" + newCustomer + "'): " + customers.join(", ");
+
+customers.pop();
+output += "\nAfter pop(): " + customers.join(", ");
+
+var insertName = prompt("Enter customer name to insert:");
+var insertPos = parseInt(prompt("Enter position to insert (0 to " + customers.length + "):"));
+customers.splice(insertPos, 0, insertName);
+output += "\nAfter insert '" + insertName + "' at position " + insertPos + ": " + customers.join(", ");
+
+var deletePos = parseInt(prompt("Enter position to delete (0 to " + (customers.length - 1) + "):"));
+customers.splice(deletePos, 1);
+output += "\nAfter delete at position " + deletePos + ": " + customers.join(", ");
+
+output += "\nFinal Customers: " + customers.join(", ");
+alert(output);
+</script>
+</body>
+</html>

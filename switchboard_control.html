@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Switchboard Control</title>
+</head>
+<body>
+    <h1>Switchboard Control (Open Console to See Output)</h1>
+
+    <script>
+        "use strict";
+
+        // 1. const for building name
+        const buildingName = "Sunrise Apartments";
+
+        // 2. let for device status
+        let status = "OFF";
+
+        // 3. Device list
+        const devices = ["Light", "Fan", "AC"];
+
+        // 4. Loop with var
+        for (var i = 0; i < devices.length; i++) {
+            status = status === "OFF" ? "ON" : "OFF";
+            console.log(`Checking Switch ${i + 1}: ${devices[i]} is ${status}`);
+        }
+
+        // 5. Show var usage outside loop
+        console.log(`All switches checked for ${buildingName}.`);
+        console.log(`Loop counter after loop (using var): i = ${i}`);
+
+        // 6. Try changing const
+        try {
+            buildingName = "Moonrise Towers";
+        } catch (err) {
+            console.log(`Error when reassigning const: ${err.name} - ${err.message}`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Income Tax Calculator (Multiple Callbacks)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: brown; }
+        .result { border: 1px solid #000; padding: 15px; width: 350px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Income Tax Calculator (Multiple Callbacks)</h2>
+
+    <label>Name: <input type="text" id="name" value=""></label><br><br>
+    <label>PAN: <input type="text" id="pan" value=""></label><br><br>
+    <label>Annual Income: <input type="number" id="income" value=""></label><br><br>
+    <button onclick="processTax()">Calculate Tax</button>
+
+    <div id="output" class="result"></div>
+
+    <script>
+        let taxRecords = []; // JSON array for record keeping
+
+        // Callback 1: Log to console
+        function logToConsole(name, pan, income, tax) {
+            console.log(`Name: ${name}`);
+            console.log(`PAN: ${pan}`);
+            console.log(`Annual Income: ₹ ${income}`);
+            console.log(`Calculated Tax: ₹ ${tax}`);
+        }
+
+        // Callback 2: Display on HTML page
+        function displayOnPage(name, pan, income, tax) {
+            document.getElementById("output").innerHTML =
+                `<strong>Name:</strong> ${name} <br>
+                 <strong>PAN:</strong> ${pan} <br>
+                 <strong>Annual Income:</strong> ₹ ${income} <br>
+                 <strong>Calculated Tax:</strong> ₹ ${tax}`;
+        }
+
+        // Callback 3: Save to JSON records
+        function saveToRecords(name, pan, income, tax) {
+            taxRecords.push({ name, pan, income, tax });
+            console.log("Tax Records JSON:", JSON.stringify(taxRecords, null, 2));
+        }
+
+        // Function to calculate tax based on slabs
+        function calculateTax(income) {
+            let tax = 0;
+            if (income <= 250000) tax = 0;
+            else if (income <= 500000) tax = (income - 250000) * 0.05;
+            else if (income <= 1000000) tax = (250000 * 0.05) + (income - 500000) * 0.2;
+            else tax = (250000 * 0.05) + (500000 * 0.2) + (income - 1000000) * 0.3;
+            return tax;
+        }
+
+        // Main function to process
+        function processTax() {
+            const name = document.getElementById("name").value;
+            const pan = document.getElementById("pan").value;
+            const income = parseFloat(document.getElementById("income").value);
+            const tax = calculateTax(income);
+
+            // Multiple callbacks
+            logToConsole(name, pan, income, tax);
+            displayOnPage(name, pan, income, tax);
+            saveToRecords(name, pan, income, tax);
+        }
+    </script>
+</body>
+</html>

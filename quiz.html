@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quiz Game</title>
+</head>
+<body>
+<script>
+alert("Welcome to the Quiz Game!");
+var name = prompt("What is your name?");
+if(name===null||name.trim()===""){name="Guest";}
+var ready = confirm(name + ", are you ready for the quiz?");
+if(ready){
+    var answer = prompt("Which HTML tag is used to include JavaScript code?\nA) <style>\nB) <script>\nC) <link>\n\nType A, B, or C.");
+    if(answer!==null){
+        answer = answer.trim().toUpperCase();
+        if(answer==="B"){
+            alert("Correct! The <script> tag is used to include JavaScript.");
+        }else{
+            alert("Wrong. The correct answer is B) <script>.");
+        }
+    }else{
+        alert("Quiz cancelled.");
+    }
+}else{
+    alert("No problem, come back when you are ready.");
+}
+</script>
+</body>
+</html>

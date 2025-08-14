@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RTO Vehicle Registration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .accordion-button:not(.collapsed) {
+        background-color: #f8f9fa;
+    }
+    .toast-container {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 9999;
+    }
+</style>
+</head>
+<body class="bg-light">
+
+<div class="container my-4">
+    <h2 class="text-center mb-4">RTO Vehicle Registration</h2>
+    
+    <!-- Progress Bar -->
+    <div class="progress mb-4">
+        <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%">0%</div>
+    </div>
+
+    <form id="rtoForm" novalidate>
+
+        <div class="accordion" id="registrationAccordion">
+            <!-- Owner Section -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ownerSection">
+                        1. Owner
+                    </button>
+                </h2>
+                <div id="ownerSection" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" name="fullName" required>
+                                <div class="invalid-feedback">Enter your full name</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Date of Birth</label>
+                                <input type="date" class="form-control" name="dob" required>
+                                <div class="invalid-feedback">Enter valid DOB (≥18 years)</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email" required>
+                                <div class="invalid-feedback">Enter a valid email</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Mobile (India)</label>
+                                <input type="tel" class="form-control" name="mobile" pattern="^\+91[0-9]{10}$" placeholder="+919876543210" required>
+                                <div class="invalid-feedback">Enter valid Indian mobile number</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">PAN</label>
+                                <input type="text" class="form-control" name="pan" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" required>
+                                <div class="invalid-feedback">Enter valid PAN (ABCDE1234F)</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Driving License No.</label>
+                                <input type="text" class="form-control" name="dl" required>
+                                <div class="invalid-feedback">Enter valid DL No.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address Section -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#addressSection">
+                        2. Address
+                    </button>
+                </h2>
+                <div id="addressSection" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Address Line 1</label>
+                                <input type="text" class="form-control" required>
+                                <div class="invalid-feedback">Enter address</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Vehicle Class</label>
+                                <select class="form-select" required>
+                                    <option value="">Choose...</option>
+                                    <option>LMV</option>
+                                    <option>MCWG</option>
+                                    <option>HMV</option>
+                                </select>
+                                <div class="invalid-feedback">Select vehicle class</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Fuel Type</label>
+                                <select class="form-select" required>
+                                    <option value="">Choose...</option>
+                                    <option>Petrol</option>
+                                    <option>Diesel</option>
+                                    <option>Electric</option>
+                                </select>
+                                <div class="invalid-feedback">Select fuel type</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Make</label>
+                                <input type="text" class="form-control" required>
+                                <div class="invalid-feedback">Enter make</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Engine No.</label>
+                                <input type="text" class="form-control" pattern="[A-Za-z0-9]{6,12}" required>
+                                <div class="invalid-feedback">Enter valid engine number</div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Year of Manufacture</label>
+                                <input type="number" class="form-control" min="1900" max="2025" required>
+                                <div class="invalid-feedback">Enter valid year</div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Purchase Date</label>
+                                <input type="date" class="form-control" required>
+                                <div class="invalid-feedback">Enter purchase date</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compliance & Insurance -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#complianceSection">
+                        3. Compliance & Insurance
+                    </button>
+                </h2>
+                <div id="complianceSection" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Emission Norm</label>
+                                <select class="form-select" required>
+                                    <option value="">Choose...</option>
+                                    <option>BS-IV</option>
+                                    <option>BS-VI</option>
+                                </select>
+                                <div class="invalid-feedback">Select emission norm</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Insurance Policy No.</label>
+                                <input type="text" class="form-control" required>
+                                <div class="invalid-feedback">Enter insurance policy number</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Insurer</label>
+                                <input type="text" class="form-control" required>
+                                <div class="invalid-feedback">Enter insurer name</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Insurance Expiry</label>
+                                <input type="date" class="form-control" required>
+                                <div class="invalid-feedback">Enter expiry date</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Finance -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#financeSection">
+                        5. Finance (Hypothecation)
+                    </button>
+                </h2>
+                <div id="financeSection" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="hypothecationCheck">
+                            <label class="form-check-label" for="hypothecationCheck">Vehicle is under hypothecation / loan</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Uploads -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#uploadSection">
+                        6. Uploads
+                    </button>
+                </h2>
+                <div id="uploadSection" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <label class="form-label">Upload ID Proof</label>
+                        <input type="file" class="form-control" accept=".jpg,.jpeg,.png,.pdf" required>
+                        <div class="invalid-feedback">Upload valid file (≤ 2MB)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terms & Captcha -->
+        <div class="mt-4">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                <label class="form-check-label" for="termsCheck">I agree to the terms</label>
+                <div class="invalid-feedback">You must agree before submitting</div>
+            </div>
+            <div class="mt-3">
+                <label id="captchaLabel"></label>
+                <input type="number" class="form-control w-25" id="captchaInput" required>
+                <div class="invalid-feedback">Captcha incorrect</div>
+            </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="mt-4">
+            <button class="btn btn-primary" type="submit" id="submitBtn" disabled>Submit</button>
+        </div>
+    </form>
+</div>
+
+<!-- Toast -->
+<div class="toast-container">
+    <div id="successToast" class="toast text-bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Success</strong>
+            <small>Now</small>
+        </div>
+        <div class="toast-body">Application submitted</div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const form = document.getElementById('rtoForm');
+    const progressBar = document.getElementById('progressBar');
+    const submitBtn = document.getElementById('submitBtn');
+    const captchaLabel = document.getElementById('captchaLabel');
+    const captchaInput = document.getElementById('captchaInput');
+
+    let captchaAnswer = 0;
+
+    function generateCaptcha(){
+        let a = Math.floor(Math.random()*10)+1;
+        let b = Math.floor(Math.random()*10)+1;
+        captchaAnswer = a + b;
+        captchaLabel.textContent = `Captcha: ${a} + ${b} = ?`;
+    }
+
+    generateCaptcha();
+
+    form.addEventListener('input', function(){
+        let validCount = form.querySelectorAll('input:valid, select:valid').length;
+        let totalCount = form.querySelectorAll('input[required], select[required]').length;
+        let percent = Math.floor((validCount / totalCount) * 100);
+        progressBar.style.width = percent + '%';
+        progressBar.textContent = percent + '%';
+
+        if (form.checkValidity() && parseInt(captchaInput.value) === captchaAnswer) {
+            submitBtn.disabled = false;
+        } else {
+            submitBtn.disabled = true;
+        }
+    });
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (!form.checkValidity() || parseInt(captchaInput.value) !== captchaAnswer) {
+            e.stopPropagation();
+            form.classList.add('was-validated');
+            return;
+        }
+        new bootstrap.Toast(document.getElementById('successToast')).show();
+    });
+});
+</script>
+</body>
+</html>
