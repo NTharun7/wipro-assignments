@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 30px;
+}
+
+/* Heading in center */
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* TailorShop heading color */
+.tailor-heading {
+  color: #2c3e50 ;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+/* Card title styling */
+.card-title {
+  color: #e74c3c ;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+/* List aligned properly */
+ul {
+  list-style-position: inside; /* keep bullet close to text */
+  text-align: left;            /* align text with bullet */
+  display: inline-block;       /* center the whole list block */
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* List items */
+li {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+/* Button styling */
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
