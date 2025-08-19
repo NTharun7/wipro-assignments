@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML5 Multimedia Lab</title>
+  <style>
+    /* ---------- Page layout & typography ---------- */
+    :root {
+      --card-bg: #ffffff;
+      --card-border: #d1d5db; /* gray-300 */
+      --muted: #6b7280;       /* gray-500 */
+      --soft: #f3f4f6;        /* gray-100 */
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 24px; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 400px at 10% 10%, #111827, #111827 20%, #000 100%);
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,.15);
+    }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    p.lead { margin-top: 0; color: var(--muted); }
+
+    section { margin-top: 22px; }
+    h3 { margin: 0 0 8px; font-size: 16px; }
+    small { color: var(--muted); font-weight: 500; }
+
+    /* Media elements get the same visual size for a tidy layout */
+    video, audio, object, iframe { display: block; width: 100%; }
+    video, object, iframe { max-width: 560px; height: 315px; background: var(--soft); border: 1px solid var(--card-border); border-radius: 6px; }
+    audio { max-width: 560px; }
+
+    .hint { color: var(--muted); font-size: 12px; margin: 6px 0 0; }
+    .hr { height: 1px; background: var(--card-border); margin: 16px 0; }
+
+    /* SVG row styles */
+    .svg-wrap { max-width: 560px; border: 1px dashed var(--card-border); border-radius: 6px; padding: 10px; background: #fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>HTML5 Multimedia Lab</h1>
+      <p class="lead">This page demonstrates <b>video</b>, <b>audio</b>, <b>PDF embed</b>, <b>iframe</b>, and <b>inline SVG</b>. Use it as a reference or starter template.</p>
+
+      <!-- ====================== VIDEO ====================== -->
+      <section aria-labelledby="videoTitle">
+        <h3 id="videoTitle">Video (<code>sample.mp4</code>) <small>with a poster image</small></h3>
+        <!--
+          Notes:
+          - controls: Shows play/pause UI
+          - preload="metadata": only fetches duration/thumbnail (saves bandwidth)
+          - poster: placeholder image shown before playback (using an inline SVG data URL)
+          - Provide multiple <source> for better browser support (mp4/webm)
+        -->
+        <video controls preload="metadata"
+               poster="data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='560' height='315'>\
+  <rect width='100%' height='100%' fill='%23f3f4f6'/>\
+  <rect x='1' y='1' width='558' height='313' fill='none' stroke='%23d1d5db'/>\
+  <polygon points='230,115 230,200 315,157' fill='%23ef4444'/>\
+  <text x='16' y='28' font-family='Arial,Helvetica' font-size='16' fill='%236b7280'>poster.svg</text>\
+</svg>">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+          <!-- Fallback text if the browser doesn't support <video> -->
+          Your browser does not support the HTML5 video tag.
+        </video>
+        <p class="hint">Tip: Replace the URLs in the <code>&lt;source&gt;</code> tags with your own <code>.mp4</code>/<code>.webm</code> files if you are working offline.</p>
+      </section>
+
+      <div class="hr"></div>
+
+      <!-- ====================== AUDIO ====================== -->
+      <section aria-labelledby="audioTitle">
+        <h3 id="audioTitle">Audio (<code>sample.mp3</code>) <small>controls | loop</small></h3>
+        <!--
+          Notes:
+          - loop: restart automatically when the audio ends
+          - preload="none": do not download the audio until the user presses play
+        -->
+        <audio controls loop preload="none">
+          <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg" />
+          Your browser does not support the HTML5 audio element.
+        </audio>
+      </section>
+
+      <div class="hr"></div>
+
+      <!-- ====================== EMBED PDF ====================== -->
+      <section aria-labelledby="pdfTitle">
+        <h3 id="pdfTitle">Embed (<code>document.pdf</code>)</h3>
+        <!--
+          <object> is preferred for PDFs so we can offer a fallback link.
+          Many browsers will render the PDF inline; otherwise users can download it.
+        -->
+        <object data="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
+                type="application/pdf" width="100%" height="315" aria-label="PDF preview">
+          <p>PDF preview unavailable. <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" download>Download document.pdf</a></p>
+        </object>
+      </section>
+
+      <div class="hr"></div>
+
+      <!-- ====================== IFRAME ====================== -->
+      <section aria-labelledby="iframeTitle">
+        <h3 id="iframeTitle">Iframe (<code>demo.html</code>)</h3>
+        <!--
+          Using srcdoc creates a self‑contained demo without needing a separate file.
+          The sandbox attribute adds security (no scripts, forms, or same‑origin access).
+        -->
+        <iframe title="Embedded page preview" width="100%" height="315"
+                sandbox="allow-same-origin" 
+                srcdoc='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body{margin:0;font-family:system-ui;background:#f9fafb}header{background:#111827;color:#fff;padding:10px 14px}main{padding:14px}code{background:#eef;border:1px solid #cdd;padding:2px 4px;border-radius:4px}</style></head><body><header><strong>demo.html</strong></header><main>This is a tiny page rendered with <code>srcdoc</code> inside an <code>&lt;iframe&gt;</code>.</main></body></html>'>
+        </iframe>
+        <p class="hint">Preview created for the HTML5 Multimedia Lab. You can replace <code>srcdoc</code> with <code>src="demo.html"</code> to load an external file.</p>
+      </section>
+
+      <div class="hr"></div>
+
+      <!-- ====================== INLINE SVG ====================== -->
+      <section aria-labelledby="svgTitle">
+        <h3 id="svgTitle">Inline SVG</h3>
+        <!--
+          Inline SVG is great for crisp graphics and icons that scale with no blurriness.
+          You can style SVG shapes with CSS or attributes. Here we render a rectangle, circle,
+          and a triangle to echo the video play symbol.
+        -->
+        <div class="svg-wrap" role="img" aria-label="Simple shapes drawn with inline SVG">
+          <svg viewBox="0 0 560 140" width="100%" height="140">
+            <!-- Background label -->
+            <text x="12" y="22" font-size="14" fill="#6b7280">Inline SVG preview</text>
+            <!-- Rounded rectangle -->
+            <rect x="16" y="34" width="120" height="90" rx="10" fill="#e5e7eb" stroke="#d1d5db" />
+            <!-- Circle -->
+            <circle cx="220" cy="79" r="45" fill="#e0f2fe" stroke="#93c5fd" />
+            <!-- Triangle (play icon) -->
+            <polygon points="360,49 360,109 420,79" fill="#ef4444"/>
+          </svg>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</body>
+</html>
