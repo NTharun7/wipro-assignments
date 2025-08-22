@@ -30,7 +30,7 @@ class Fruits extends Component {
     const { newFruit, fruits } = this.state;
     if (newFruit.trim() !== "") {
       this.setState({
-        fruits: [...fruits, newFruit],
+        fruits: [...fruits, newFruit], // add new fruit to array
         newFruit: ""
       });
     }

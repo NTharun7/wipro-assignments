@@ -19,6 +19,10 @@ import BakingItemsForm from "./REACTFILES/BakingItemsForm";
 import AccessoriesForm from "./REACTFILES/AccessoriesForm";
 import FlightBooking from "./REACTFILES/FlightBooking";
 import MovieForm from "./REACTFILES/MovieForm";
+import ElectronicProductApp from "./REACTFILES/ElectronicProductApp"; 
+import FurnitureStore from "./REACTFILES/FurnitureStore";
+import RestaurantForm from "./REACTFILES/RestaurantForm";
+import ParentChildSibling from "./REACTFILES/ParentChildSibling";
 
 function App() {
   const groceryItems = ["Rice", "Wheat", "Sugar", "Milk", "Oil"];
@@ -44,6 +48,10 @@ function App() {
        <AccessoriesForm />
        <FlightBooking />
        <MovieForm />
+       <ElectronicProductApp />
+       <FurnitureStore />
+       <RestaurantForm />
+       <ParentChildSibling />
     </div>
   );
 }
