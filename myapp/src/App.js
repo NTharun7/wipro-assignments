@@ -23,6 +23,11 @@ import ElectronicProductApp from "./REACTFILES/ElectronicProductApp";
 import FurnitureStore from "./REACTFILES/FurnitureStore";
 import RestaurantForm from "./REACTFILES/RestaurantForm";
 import ParentChildSibling from "./REACTFILES/ParentChildSibling";
+import ChessTournamentForm from "./REACTFILES/Chess Tournament Form";
+import HockeyTournamentForm from "./REACTFILES/Hockey Tournament Form";
+import TailoringInventory from './REACTFILES/TailoringInventory';
+import FootballPlayerManagement from './REACTFILES/FootballPlayerManagement';
+
 
 function App() {
   const groceryItems = ["Rice", "Wheat", "Sugar", "Milk", "Oil"];
@@ -52,6 +57,12 @@ function App() {
        <FurnitureStore />
        <RestaurantForm />
        <ParentChildSibling />
+       
+      
+       <ChessTournamentForm /> 
+       <HockeyTournamentForm />
+       <TailoringInventory />
+       <FootballPlayerManagement />
     </div>
   );
 }

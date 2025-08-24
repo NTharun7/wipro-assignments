@@ -1,0 +1,82 @@
+{
+  "players": [
+    {
+      "id": 1,
+      "name": "Lionel Messi",
+      "age": 35,
+      "position": "Forward",
+      "club": "Inter Miami",
+      "nationality": "Argentina",
+      "goals": 30,
+      "matchesPlayed": 25,
+      "jerseyNumber": 10,
+      "email": "messi@example.com",
+      "contactNumber": "9876543210"
+    },
+    {
+      "id": 2,
+      "name": "Cristiano Ronaldo",
+      "age": 38,
+      "position": "Forward",
+      "club": "Al Nassr",
+      "nationality": "Portugal",
+      "goals": 28,
+      "matchesPlayed": 27,
+      "jerseyNumber": 7,
+      "email": "ronaldo@example.com",
+      "contactNumber": "9123456780"
+    },
+    {
+      "id": 3,
+      "name": "Kevin De Bruyne",
+      "age": 32,
+      "position": "Midfielder",
+      "club": "Manchester City",
+      "nationality": "Belgium",
+      "goals": 12,
+      "matchesPlayed": 30,
+      "jerseyNumber": 17,
+      "email": "debruyne@example.com",
+      "contactNumber": "9012345678"
+    },
+    {
+      "id": 4,
+      "name": "Virgil van Dijk",
+      "age": 31,
+      "position": "Defender",
+      "club": "Liverpool",
+      "nationality": "Netherlands",
+      "goals": 5,
+      "matchesPlayed": 29,
+      "jerseyNumber": 4,
+      "email": "vandijk@example.com",
+      "contactNumber": "9234567890"
+    },
+    {
+      "id": 5,
+      "name": "Manuel Neuer",
+      "age": 37,
+      "position": "Goalkeeper",
+      "club": "Bayern Munich",
+      "nationality": "Germany",
+      "goals": 4,
+      "matchesPlayed": 28,
+      "jerseyNumber": 1,
+      "email": "neuer@example.com",
+      "contactNumber": "9345678901"
+    },
+    {
+      "name": "tharun",
+      "age": 23,
+      "position": "Forward",
+      "club": "lion",
+      "nationality": "indian",
+      "goals": 5,
+      "matchesPlayed": 8,
+      "jerseyNumber": 7,
+      "email": "tharun1378@gmail.com",
+      "contactNumber": "6281143466",
+      "id": 6
+    }
+  ]
+}
