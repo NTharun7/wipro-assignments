@@ -27,6 +27,8 @@ import ChessTournamentForm from "./REACTFILES/Chess Tournament Form";
 import HockeyTournamentForm from "./REACTFILES/Hockey Tournament Form";
 import TailoringInventory from './REACTFILES/TailoringInventory';
 import FootballPlayerManagement from './REACTFILES/FootballPlayerManagement';
+import PowerCutApp from './REACTFILES/PowerCutApp';
+import IncomeTaxApp from './REACTFILES/IncomeTaxApp';
 
 
 function App() {
@@ -63,6 +65,12 @@ function App() {
        <HockeyTournamentForm />
        <TailoringInventory />
        <FootballPlayerManagement />
+       
+       {/* Power Cut Announcement System */}
+       <PowerCutApp />
+       
+       {/* Income Tax Department Multi-Page Application */}
+       <IncomeTaxApp />
     </div>
   );
 }
