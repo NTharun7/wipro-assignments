@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courier Form</title>
+</head>
+<body>
+    <h2>Courier Booking Form</h2>
+    <form action="/submit" method="POST">
+        <label>Tracking ID:</label>
+        <input type="text" name="trackingId" value="C12345" required><br><br>
+
+        <label>Sender Name:</label>
+        <input type="text" name="senderName" value="Thananya" required><br><br>
+
+        <label>Receiver Name:</label>
+        <input type="text" name="receiverName" value="Devi" required><br><br>
+
+        <label>Pickup Address:</label>
+        <input type="text" name="pickupAddress" value="Chennai" required><br><br>
+
+        <label>Delivery Address:</label>
+        <input type="text" name="deliveryAddress" value="Bangalore" required><br><br>
+
+        <label>Weight (kg):</label>
+        <input type="number" name="weight" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

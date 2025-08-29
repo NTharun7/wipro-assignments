@@ -1,0 +1,3 @@
+{"id":1,"name":"Apple","color":"Red","price":120}
+{"id":2,"name":"Banana","color":"Yellow","price":40}
+{"id":3,"name":"Mango","color":"Orange","price":150}
