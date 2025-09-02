@@ -1,0 +1,21 @@
+/* Ensure full height layout */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* App wrapper takes full screen height */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+/* Main content fills available space */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
